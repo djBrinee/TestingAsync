@@ -24,10 +24,10 @@ namespace TestingAsync
                 Console.WriteLine($"{tasa.Entidad,-45}  {tasa.Valor,6}  {tasa.MonedaOrigen}->{tasa.MonedaDestino}");
         }
 
-        public async Task ComprarDolaresEnElPopular()
+        public async Task ConvertirPesosADolares()
         {
-            Console.WriteLine("Cuántos dólares quieres comprar");
-            float valorEnPesos = float.Parse(Console.ReadLine());
+            Console.WriteLine("Cuántos pesos quieres convertir a dolar");
+            float dolares = float.Parse(Console.ReadLine());
             Console.WriteLine("\n");
             var tasas = await buscadorTasas.ObtenerTasas();
 
@@ -41,7 +41,7 @@ namespace TestingAsync
                    DOP->USD:    cantidadDolares = cantidadPesos   ÷ tasaPesos
                    USD->DOP:    cantidadPesos   = cantidadDolares × tasaPesos 
             */
-            float valorFinal =  valorEnPesos / tasaVentaDolaresPopular.Valor;
+            float valorFinal =  dolares * tasaVentaDolaresPopular.Valor;
             Console.WriteLine($"Este es el resultado {valorFinal}");
         }
     }
